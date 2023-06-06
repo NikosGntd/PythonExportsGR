@@ -1,0 +1,59 @@
+def get_valid_input(prompt, input_type):
+    while True:
+        try:
+            user_input = input_type(input(prompt))
+            return user_input
+        except ValueError:
+            print("Invalid input. Please enter a valid value.")
+
+def calculate_credit_risk():
+    print("Please provide the following information:")
+
+    age = int(get_valid_input("Enter the borrower's age: ", int))
+    income = float(get_valid_input("Enter the borrower's annual income: ", float))
+    credit_score = int(get_valid_input("Enter the borrower's credit score: ", int))
+
+    age_ranges = {
+        "20-40": {"min": 20, "max": 40, "weight": 0.3},
+        "40-60": {"min": 40, "max": 60, "weight": 0.5},
+        "60-80": {"min": 60, "max": 80, "weight": 0.7}
+    }
+
+    income_ranges = {
+        "0-700": {"min": 0, "max": 700, "weight": 0.3},
+        "700-1500": {"min": 700, "max": 1500, "weight": 0.5},
+        "1500-3000": {"min": 1500, "max": 3000, "weight": 0.7}
+    }
+
+    credit_score_ranges = {
+        "Low": {"min": 0, "max": 700, "weight": 0.2},
+        "High": {"min": 700, "max": float('inf'), "weight": 0.4}
+    }
+
+    risk_score = 0
+
+    for age_range, age_data in age_ranges.items():
+        if age_data["min"] <= age <= age_data["max"]:
+            risk_score += age_data["weight"]
+
+    for income_range, income_data in income_ranges.items():
+        if income_data["min"] <= income <= income_data["max"]:
+            risk_score += income_data["weight"]
+
+    for credit_score_range, credit_score_data in credit_score_ranges.items():
+        if credit_score_data["min"] <= credit_score <= credit_score_data["max"]:
+            risk_score += credit_score_data["weight"]
+
+    if risk_score >= 0.8:
+        return "Low risk"
+    elif risk_score >= 0.6:
+        return "Medium risk"
+    else:
+        return "High risk"
+
+def main():
+    risk = calculate_credit_risk()
+    print("Credit risk:", risk)
+
+if __name__ == "__main__":
+    main()
