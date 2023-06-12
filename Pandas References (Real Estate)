@@ -1,0 +1,166 @@
+abs():
+import pandas as pd
+
+data = {'Price': [-100000, 200000, -150000, 300000]}
+df = pd.DataFrame(data)
+
+abs_df = df.abs()
+print(abs_df)
+
+Output:
+    Price
+0  100000
+1  200000
+2  150000
+3  300000
+
+add():
+import pandas as pd
+data = {'Price': [100000, 200000, 150000, 300000]}
+df = pd.DataFrame(data)
+
+df_added = df.add(50000)
+print(df_added)
+Output:
+    Price
+0  150000
+1  250000
+2  200000
+3  350000
+
+add_prefix():
+import pandas as pd
+data = {'Price': [100000, 200000, 150000, 300000]}
+df = pd.DataFrame(data)
+
+df_prefixed = df.add_prefix('Prefix_')
+print(df_prefixed)
+
+Output:
+    Prefix_Price
+0         100000
+1         200000
+2         150000
+3         300000
+
+add_suffix():
+import pandas as pd
+
+data = {'Price': [100000, 200000, 150000, 300000]}
+df = pd.DataFrame(data)
+
+df_suffixed = df.add_suffix('_Suffix')
+print(df_suffixed)
+Output:
+     Price_Suffix
+0         100000
+1         200000
+2         150000
+3         300000
+agg():
+
+
+import pandas as pd
+data = {'Price': [100000, 200000, 150000, 300000]}
+df = pd.DataFrame(data)
+
+agg_result = df.agg(['sum', 'mean', 'min', 'max'])
+print(agg_result)
+
+Output:
+       Price
+sum    750000
+mean   187500
+min    100000
+max    300000
+
+
+aggregate():
+import pandas as pd
+
+data = {'Price': [100000, 200000, 150000, 300000],
+        'Rooms': [3, 4, 2, 5]}
+df = pd.DataFrame(data)
+
+# Apply different aggregation functions to the 'Price' column
+agg_result = df['Price'].aggregate(['sum', 'mean', 'min', 'max'])
+print(agg_result)
+
+Output:
+sum     750000
+mean    187500
+min     100000
+max     300000
+Name: Price, dtype: int64
+
+align():
+import pandas as pd
+
+data1 = {'Price': [100000, 200000, 150000, 300000]}
+data2 = {'Rooms': [3, 4, 2, 5]}
+df1 = pd.DataFrame(data1)
+df2 = pd.DataFrame(data2)
+
+# Align two DataFrames based on their indices
+aligned_df1, aligned_df2 = df1.align(df2, join='outer')
+print(aligned_df1)
+print(aligned_df2)
+
+Output:
+     Price
+0  100000.0
+1  200000.0
+2  150000.0
+3  300000.0
+
+     Rooms
+0     3.0
+1     4.0
+2     2.0
+3     5.0
+
+all():
+import pandas as pd
+
+data = {'Price': [100000, 200000, 150000, 300000]}
+df = pd.DataFrame(data)
+
+all_true = df['Price'].all()
+print(all_true)  # Output: True
+
+data_with_zeros = {'Price': [100000, 0, 150000, 300000]}
+df_with_zeros = pd.DataFrame(data_with_zeros)
+
+all_true_with_zeros = df_with_zeros['Price'].all()
+print(all_true_with_zeros)  # Output: False
+
+\any():
+import pandas as pd
+
+data = {'Price': [100000, 200000, 150000, 300000]}
+df = pd.DataFrame(data)
+
+any_true = df['Price'].any()
+print(any_true)  # Output: True
+
+data_with_zeros = {'Price': [0, 0, 0, 0]}
+df_with_zeros = pd.DataFrame(data_with_zeros)
+
+any_true_with_zeros = df_with_zeros['Price'].any()
+print(any_true_with_zeros)  # Output: False
+
+append():
+import pandas as pd
+data1 = {'Price': [100000, 200000, 150000, 300000]}
+data2 = {'Rooms': [3, 4, 2, 5]}
+df1 = pd.DataFrame(data1)
+df2 = pd.DataFrame(data2)
+
+# Append the 'Rooms' column from df2 to df1
+appended_df = df1.append(df2['Rooms'])
+print(appended_df)
+Output:
+       0
+0  100000
+1  200000
+2 
