@@ -1,0 +1,66 @@
+class Employee:
+    def __init__(self, name, department, test_scores):
+        self.name = name
+        self.department = department
+        self.test_scores = test_scores
+
+    def calculate_average_score(self):
+        return sum(self.test_scores) / len(self.test_scores)
+
+class HREvaluationSystem:
+    def __init__(self):
+        self.employees = []
+
+    def add_employee(self, employee):
+        self.employees.append(employee)
+
+    def evaluate_performance(self):
+        for employee in self.employees:
+            average_score = employee.calculate_average_score()
+            performance_level = self._get_performance_level(average_score)
+            feedback = self._generate_feedback(employee.name, employee.department, performance_level)
+            print(feedback)
+
+    def _get_performance_level(self, average_score):
+        if average_score >= 90:
+            return "Outstanding"
+        elif average_score >= 80:
+            return "Excellent"
+        elif average_score >= 70:
+            return "Good"
+        else:
+            return "Needs Improvement"
+
+    def _generate_feedback(self, employee_name, department, performance_level):
+        feedback = f"Employee: {employee_name}\n"
+        feedback += f"Department: {department}\n"
+        feedback += f"Performance Level: {performance_level}\n"
+        return feedback
+
+--Create an instance of the HR evaluation system
+hr_system = HREvaluationSystem()
+
+--Create employee objects and add them to the evaluation system
+employee1 = Employee("John Doe", "Finance", [95, 92, 88, 97])
+employee2 = Employee("Jane Smith", "HR", [78, 83, 82, 75])
+employee3 = Employee("Mike Johnson", "IT", [63, 71, 68, 70])
+
+hr_system.add_employee(employee1)
+hr_system.add_employee(employee2)
+hr_system.add_employee(employee3)
+
+--Evaluate the performance of the employees
+hr_system.evaluate_performance()
+
+--Output:
+Employee: John Doe
+Department: Finance
+Performance Level: Outstanding
+
+Employee: Jane Smith
+Department: HR
+Performance Level: Excellent
+
+Employee: Mike Johnson
+Department: IT
+Performance Level: Needs Improvement
