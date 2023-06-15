@@ -164,3 +164,112 @@ Output:
 0  100000
 1  200000
 2 
+
+
+
+import pandas as pd
+
+data = {
+  "Property Size (sqft)": [1500.5, 2000.7, 1800.9],
+  "Bedrooms": [3, 4, 3],
+  "Bathrooms": [2, 3, 2],
+  "Price ($)": [250000, 350000, 300000]
+}
+
+df = pd.DataFrame(data)
+
+newdf = df.astype('int64')
+
+print("Original DataFrame:")
+print(df)
+
+print("\nNew DataFrame with modified data types:")
+print(newdf)
+
+--Output:
+   Property Size (sqft)  Bedrooms  Bathrooms  Price ($)
+0               1500.5         3          2     250000
+1               2000.7         4          3     350000
+2               1800.9         3          2     300000
+
+New DataFrame with modified data types:
+   Property Size (sqft)  Bedrooms  Bathrooms  Price ($)
+0                  1500         3          2     250000
+1                  2000         4          3     350000
+2                  1800         3          2     300000
+
+
+
+import pandas as pd
+
+data = {
+  "First Name": ["Sally", "Mary", "John"],
+  "Age": [50, 40, 30],
+  "Qualified": [True, False, False]
+}
+
+df = pd.DataFrame(data)
+print(df.at[1, "First Name"])
+--Output:
+Mary
+
+
+import pandas as pd
+
+data1 = {
+  "Property Size (sqft)": [1500, 2000],
+  "Bedrooms": [3, 4]
+}
+
+data2 = {
+  "Property Size (sqft)": [1800, 1600],
+  "Bedrooms": [3, 2]
+}
+
+df1 = pd.DataFrame(data1)
+df2 = pd.DataFrame(data2)
+
+def myfunc(a, b):
+    if a["Property Size (sqft)"].sum() > b["Property Size (sqft)"].sum():
+        return a
+    else:
+        return b
+
+combined_df = df1.combine(df2, myfunc)
+
+print(combined_df)
+--Output:
+   Property Size (sqft)  Bedrooms
+0                  1800         3
+1                  2000         4
+
+
+
+import pandas as pd
+
+data = {
+    "Property": ["House", "Apartment", pd.NA],
+    "Price": [250000, 150000, pd.NA],
+    "Bedrooms": [4, 2, pd.NA]
+}
+
+df = pd.DataFrame(data)
+
+print("Original dtypes:")
+print(df.dtypes)
+
+newdf = df.convert_dtypes()
+
+print("New dtypes:")
+print(newdf.dtypes)
+--Output:
+--Original dtypes:
+Property    object
+Price       object
+Bedrooms    object
+dtype: object
+New dtypes:
+Property    string
+Price        Int64
+Bedrooms     Int64
+dtype: object
