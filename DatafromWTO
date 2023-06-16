@@ -1,0 +1,41 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://e-trips.wto.org/En/Search/LawArticle632?SearchParameterNotificationFormatIds=23&DoSearch=True"
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the HTML content using BeautifulSoup
+    soup = BeautifulSoup(response.content, "html.parser")
+
+    # Find the relevant table containing the laws
+    table = soup.find("table", {"class": "search-results"})
+
+    if table:
+        # Extract the rows from the table
+        rows = table.find_all("tr")
+
+        # Process each row
+        for row in rows[1:]:  # Exclude the header row
+            # Extract the columns from the row
+            columns = row.find_all("td")
+
+            # Extract the relevant information from the columns
+            document_symbol = columns[0].text.strip()
+            date = columns[1].text.strip()
+            title = columns[2].text.strip()
+            member = columns[3].text.strip()
+
+            # Print the extracted information
+            print("Document Symbol:", document_symbol)
+            print("Date of Document Distribution:", date)
+            print("Title of Law or Regulation:", title)
+            print("Member:", member)
+            print("---------")
+    else:
+        print("No table found on the page.")
+else:
+    print("Failed to retrieve the webpage.")
