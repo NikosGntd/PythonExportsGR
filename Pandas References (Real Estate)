@@ -7,7 +7,7 @@ df = pd.DataFrame(data)
 abs_df = df.abs()
 print(abs_df)
 
-Output:
+#Output:
     Price
 0  100000
 1  200000
@@ -21,7 +21,8 @@ df = pd.DataFrame(data)
 
 df_added = df.add(50000)
 print(df_added)
-Output:
+
+#Output:
     Price
 0  150000
 1  250000
@@ -36,7 +37,7 @@ df = pd.DataFrame(data)
 df_prefixed = df.add_prefix('Prefix_')
 print(df_prefixed)
 
-Output:
+#Output:
     Prefix_Price
 0         100000
 1         200000
@@ -51,7 +52,8 @@ df = pd.DataFrame(data)
 
 df_suffixed = df.add_suffix('_Suffix')
 print(df_suffixed)
-Output:
+
+#Output:
      Price_Suffix
 0         100000
 1         200000
@@ -67,7 +69,7 @@ df = pd.DataFrame(data)
 agg_result = df.agg(['sum', 'mean', 'min', 'max'])
 print(agg_result)
 
-Output:
+#Output:
        Price
 sum    750000
 mean   187500
@@ -82,11 +84,11 @@ data = {'Price': [100000, 200000, 150000, 300000],
         'Rooms': [3, 4, 2, 5]}
 df = pd.DataFrame(data)
 
-# Apply different aggregation functions to the 'Price' column
+# Aggregation functions to the 'Price' column
 agg_result = df['Price'].aggregate(['sum', 'mean', 'min', 'max'])
 print(agg_result)
 
-Output:
+#Output:
 sum     750000
 mean    187500
 min     100000
@@ -106,7 +108,7 @@ aligned_df1, aligned_df2 = df1.align(df2, join='outer')
 print(aligned_df1)
 print(aligned_df2)
 
-Output:
+#Output:
      Price
 0  100000.0
 1  200000.0
@@ -119,7 +121,7 @@ Output:
 2     2.0
 3     5.0
 
-all():
+#all():
 import pandas as pd
 
 data = {'Price': [100000, 200000, 150000, 300000]}
@@ -159,7 +161,8 @@ df2 = pd.DataFrame(data2)
 # Append the 'Rooms' column from df2 to df1
 appended_df = df1.append(df2['Rooms'])
 print(appended_df)
-Output:
+
+#Output:
        0
 0  100000
 1  200000
@@ -186,13 +189,13 @@ print(df)
 print("\nNew DataFrame with modified data types:")
 print(newdf)
 
---Output:
+#Output:
    Property Size (sqft)  Bedrooms  Bathrooms  Price ($)
 0               1500.5         3          2     250000
 1               2000.7         4          3     350000
 2               1800.9         3          2     300000
 
-New DataFrame with modified data types:
+#New DataFrame with modified data types:
    Property Size (sqft)  Bedrooms  Bathrooms  Price ($)
 0                  1500         3          2     250000
 1                  2000         4          3     350000
@@ -210,7 +213,8 @@ data = {
 
 df = pd.DataFrame(data)
 print(df.at[1, "First Name"])
---Output:
+
+#Output:
 Mary
 
 
@@ -238,7 +242,8 @@ def myfunc(a, b):
 combined_df = df1.combine(df2, myfunc)
 
 print(combined_df)
---Output:
+
+#Output:
    Property Size (sqft)  Bedrooms
 0                  1800         3
 1                  2000         4
@@ -262,13 +267,15 @@ newdf = df.convert_dtypes()
 
 print("New dtypes:")
 print(newdf.dtypes)
---Output:
---Original dtypes:
+
+#Output:
+#Original dtypes:
 Property    object
 Price       object
 Bedrooms    object
 dtype: object
-New dtypes:
+
+#New dtypes:
 Property    string
 Price        Int64
 Bedrooms     Int64
