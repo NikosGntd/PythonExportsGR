@@ -37,10 +37,9 @@ class HREvaluationSystem:
         feedback += f"Performance Level: {performance_level}\n"
         return feedback
 
---Create an instance of the HR evaluation system
 hr_system = HREvaluationSystem()
 
---Create employee objects and add them to the evaluation system
+
 employee1 = Employee("John Doe", "Finance", [95, 92, 88, 97])
 employee2 = Employee("Jane Smith", "HR", [78, 83, 82, 75])
 employee3 = Employee("Mike Johnson", "IT", [63, 71, 68, 70])
@@ -49,10 +48,10 @@ hr_system.add_employee(employee1)
 hr_system.add_employee(employee2)
 hr_system.add_employee(employee3)
 
---Evaluate the performance of the employees
+
 hr_system.evaluate_performance()
 
---Output:
+--Output
 Employee: John Doe
 Department: Finance
 Performance Level: Outstanding
