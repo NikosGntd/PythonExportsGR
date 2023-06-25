@@ -1,0 +1,117 @@
+import requests
+from bs4 import BeautifulSoup
+
+# Financial Metrics Calculator - Profitability Ratios
+
+# Extract financial statements from a website
+def find_financial_statements(url):
+    response = requests.get(url)
+    if response.ok:
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        financial_statements = ...
+        
+        return financial_statements
+    else:
+        print("Failed to fetch financial statements from the website. Error:", response.status_code)
+        return None
+
+# Extract financial data from statements and calculate net income
+def extract_net_income(financial_statements):
+    # Extract relevant data from financial statements and calculate net income
+    net_income = ...
+    
+    return net_income
+
+# Extract financial data from statements and calculate total assets
+def extract_total_assets(financial_statements):
+    # Extract relevant data from financial statements and calculate total assets
+    total_assets = ...
+    
+    return total_assets
+
+# Extract financial data from statements and calculate shareholders' equity
+def extract_shareholders_equity(financial_statements):
+    # Extract relevant data from financial statements and calculate shareholders' equity
+    shareholders_equity = ...
+    
+    return shareholders_equity
+
+# Extract financial data from statements and calculate revenue
+def extract_revenue(financial_statements):
+    # Extract relevant data from financial statements and calculate revenue
+    revenue = ...
+    
+    return revenue
+
+# Extract financial data from statements and calculate cost of goods sold
+def extract_cost_of_goods_sold(financial_statements):
+    # Extract relevant data from financial statements and calculate cost of goods sold
+    cost_of_goods_sold = ...
+    
+    return cost_of_goods_sold
+
+# Gross profit margin
+def calculate_gross_profit_margin(revenue, cost_of_goods_sold):
+    gross_profit_margin = (revenue - cost_of_goods_sold) / revenue
+    return gross_profit_margin
+
+# Net profit margin
+def calculate_net_profit_margin(net_income, revenue):
+    net_profit_margin = net_income / revenue
+    return net_profit_margin
+
+# Return on assets (ROA)
+def calculate_roa(net_income, total_assets):
+    roa = net_income / total_assets
+    return roa
+
+# Return on equity (ROE)
+def calculate_roe(net_income, shareholders_equity):
+    roe = net_income / shareholders_equity
+    return roe
+
+# Example usage
+website_url = 'https://example.com/financial_statements'  # Replace with the URL of the website's financial statements
+financial_statements = find_financial_statements(website_url)
+
+if financial_statements:
+    net_income = extract_net_income(financial_statements)
+    total_assets = extract_total_assets(financial_statements)
+    shareholders_equity = extract_shareholders_equity(financial_statements)
+    revenue = extract_revenue(financial_statements)
+    cost_of_goods_sold = extract_cost_of_goods_sold(financial_statements)
+
+    gross_profit_margin = calculate_gross_profit_margin(revenue, cost_of_goods_sold)
+    net_profit_margin = calculate_net_profit_margin(net_income, revenue)
+    roa = calculate_roa(net_income, total_assets)
+    roe = calculate_roe(net_income, shareholders_equity)
+
+    # Generate report
+    report = f"""
+    Profitability Ratios:
+    Gross Profit Margin: {gross_profit_margin}
+    Net Profit Margin: {net_profit_margin}
+    Return on Assets (ROA): {roa}
+    Return on Equity (ROE): {roe}
+    """
+
+    # Save report
+    with open('profitability_ratios_report
+
+.txt', 'w') as file:
+        file.write(report)
+
+    # Send report to website
+    website_report_url = 'https://example.com/submit_report'  # Replace with the URL to submit the report
+    response = requests.post(website_report_url, json={'report': report})
+
+    if response.ok:
+        print("Report sent successfully to the website.")
+    else:
+        print("Failed to send report to the website. Error:", response.status_code)
+else:
+    print("No financial statements found on the website.")
+```
+
+Please note that you still need to replace the ellipses (`...`) with the appropriate code to extract the financial data from the statements.
