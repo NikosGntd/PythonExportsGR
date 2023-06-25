@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 # Financial Metrics Calculator - Liquidity Ratios
 
-# Find and extract financial statements from a website
+# Extract financial statements from a website
 def find_financial_statements(url):
     response = requests.get(url)
     if response.ok:
@@ -17,31 +17,31 @@ def find_financial_statements(url):
         print("Failed to fetch financial statements from the website. Error:", response.status_code)
         return None
 
-# Function to extract financial data from statements and calculate current assets
+# Extract financial data from statements and calculate current assets
 def extract_current_assets(financial_statements):
     # Extract relevant data from financial statements and calculate current assets
     current_assets = ...
 
     return current_assets
 
-# Function to extract financial data from statements and calculate current liabilities
+# Extract financial data from statements and calculate current liabilities
 def extract_current_liabilities(financial_statements):
     # Extract relevant data from financial statements and calculate current liabilities
     current_liabilities = ...
 
     return current_liabilities
 
-# Function to calculate current ratio
+# Current ratio
 def calculate_current_ratio(current_assets, current_liabilities):
     current_ratio = current_assets / current_liabilities
     return current_ratio
 
-# Function to calculate quick ratio
+# Quick ratio
 def calculate_quick_ratio(quick_assets, current_liabilities):
     quick_ratio = quick_assets / current_liabilities
     return quick_ratio
 
-# Function to calculate cash ratio
+# Cash ratio
 def calculate_cash_ratio(cash, current_liabilities):
     cash_ratio = cash / current_liabilities
     return cash_ratio
@@ -68,7 +68,7 @@ if financial_statements:
     Cash Ratio: {cash_ratio}
     """
 
-    # Save report to a file
+    # Save report
     with open('liquidity_ratios_report.txt', 'w') as file:
         file.write(report)
 
